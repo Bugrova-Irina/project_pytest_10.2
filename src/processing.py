@@ -28,6 +28,5 @@ def sort_by_date(list_of_dicts: list[dict[str, Any]], reverse: bool = True) -> l
         if not dictionary["date"][:4].isdigit():
             raise ValueError("Некорректная дата")
 
-        else:
-            sorted_list_of_dicts = sorted(list_of_dicts, key=lambda dictionary: dictionary["date"], reverse=reverse)
-            return sorted_list_of_dicts
+    sorted_list_of_dicts = sorted(list_of_dicts, key=lambda dictionary: dictionary["date"], reverse=reverse)
+    return sorted_list_of_dicts

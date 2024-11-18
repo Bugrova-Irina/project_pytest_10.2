@@ -14,7 +14,7 @@ def mask_account_card(number_of_account_card: str) -> str:
         if symbol.isdigit():
             new_number += symbol
     if new_number == "":
-       raise ValueError("Введите номер карты")
+        raise ValueError("Введите номер карты")
 
     # заменяем номер карты или счета на маску
     list_items_of_card_number = number_of_account_card.split()
