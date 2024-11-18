@@ -1,4 +1,4 @@
-import masks  # type: ignore
+from src import masks
 
 
 def mask_account_card(number_of_account_card: str) -> str:
@@ -6,9 +6,15 @@ def mask_account_card(number_of_account_card: str) -> str:
 
     # получаем номер из номера карты или счета
     new_number = ""
+
+    if number_of_account_card == "":
+        raise ValueError("Введите номер карты")
+
     for symbol in number_of_account_card:
         if symbol.isdigit():
             new_number += symbol
+    if new_number == "":
+        raise ValueError("Введите номер карты")
 
     # заменяем номер карты или счета на маску
     list_items_of_card_number = number_of_account_card.split()
@@ -25,6 +31,13 @@ def mask_account_card(number_of_account_card: str) -> str:
 
 def get_date(date: str) -> str:
     """Функция форматирования даты"""
-    date_list = [date[8:10], date[5:7], date[:4]]
-    formated_date = ".".join(date_list)
-    return formated_date
+    if date == "":
+        raise ValueError("Введите дату")
+    elif len(date) != 26:
+        raise ValueError("Некорректные исходные данные")
+    elif not date[:4].isdigit() or not date[5:7].isdigit() or not date[8:10].isdigit():
+        raise ValueError("Некорректные исходные данные")
+    else:
+        date_list = [date[8:10], date[5:7], date[:4]]
+        formated_date = ".".join(date_list)
+        return formated_date
